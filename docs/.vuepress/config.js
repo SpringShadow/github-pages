@@ -35,8 +35,10 @@ module.exports = {
           { text: 'webpack', link: '/webpack/' },
           { text: 'vue', link: '/vue/' },
           { text: 'node', link: '/node/' },
+          { text: 'utils', link: '/utils/' },
         ]
       },
+      { text: '常用库', link: '/library/' },
       { text: '随笔', link: '/life/' },
       { text: '摘抄', link: '/excerpt/' },
     ],
@@ -44,7 +46,6 @@ module.exports = {
        // docs文件夹下面的accumulate文 件夹 文档中md文件 书写的位置(命名随意)
         '/home/':[
           "",
-          "why",
         ],
         '/html/':[
           "",
@@ -54,6 +55,7 @@ module.exports = {
         ],
         '/js/':[
           "",
+          "preload"
         ],
         '/webpack/':[
           "",
@@ -62,6 +64,12 @@ module.exports = {
           "",
         ],
         '/node/':[
+          "",
+        ],
+        '/utils/':[
+          "",
+        ],
+        '/library/':[
           "",
         ],
         '/life/':[
