@@ -5,5 +5,3 @@ db.json
 *.log
 node_modules/
 docs/.vuepress/dist/
-*.bat
-*.txt
