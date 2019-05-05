@@ -31,7 +31,7 @@ module.exports = {
         items: [
           { text: 'html', link: '/html/' },
           { text: 'css', link: '/css/' },
-          { text: 'js', link: '/js/' },
+          { text: 'javascript', link: '/javascript/' },
           { text: 'webpack', link: '/webpack/' },
           { text: 'vue', link: '/vue/' },
           { text: 'node', link: '/node/' },
@@ -53,9 +53,10 @@ module.exports = {
         '/css/':[
           "",
         ],
-        '/js/':[
+        '/javascript/':[
           "",
-          "preload"
+          "preload",
+          "reg",
         ],
         '/webpack/':[
           "",
