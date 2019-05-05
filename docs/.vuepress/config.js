@@ -29,13 +29,15 @@ module.exports = {
       {
         text: '文章',
         items: [
-          { text: 'html', link: '/html/' },
-          { text: 'css', link: '/css/' },
-          { text: 'javascript', link: '/javascript/' },
-          { text: 'webpack', link: '/webpack/' },
-          { text: 'vue', link: '/vue/' },
-          { text: 'node', link: '/node/' },
-          { text: 'utils', link: '/utils/' },
+          { text: 'html', link: '/article/html/' },
+          { text: 'css', link: '/article/css/' },
+          { text: 'javascript', link: '/article/javascript/' },
+          { text: 'es6', link: '/article/es6/' },
+          { text: 'webpack', link: '/article/webpack/' },
+          { text: 'vue', link: '/article/vue/' },
+          { text: 'node', link: '/article/node/' },
+          { text: 'utils', link: '/article/utils/' },
+          { text: '性能优化', link: '/article/optimize/' },
         ]
       },
       { text: '常用库', link: '/library/' },
@@ -47,27 +49,33 @@ module.exports = {
         '/home/':[
           "",
         ],
-        '/html/':[
+        '/article/html/':[
           "",
         ],
-        '/css/':[
+        '/article/css/':[
           "",
         ],
-        '/javascript/':[
+        '/article/javascript/':[
           "",
           "preload",
           "reg",
         ],
-        '/webpack/':[
+        '/article/es6/':[
           "",
         ],
-        '/vue/':[
+        '/article/webpack/':[
           "",
         ],
-        '/node/':[
+        '/article/vue/':[
           "",
         ],
-        '/utils/':[
+        '/article/node/':[
+          "",
+        ],
+        '/article/utils/':[
+          "",
+        ],
+        '/article/optimize/':[
           "",
         ],
         '/library/':[
