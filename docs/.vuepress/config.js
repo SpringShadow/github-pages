@@ -21,8 +21,6 @@ module.exports = {
       ]
   ],
   themeConfig: {
-    sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
-    lastUpdated: 'Last Updated', // 文档更新时间：每个文件git最后提交的时间
     theme:'foo',
     nav: [
       { text: '首页', link: '/home/' },
@@ -65,6 +63,7 @@ module.exports = {
         ],
         '/article/webpack/':[
           "",
+          "vue-webpack"
         ],
         '/article/vue/':[
           "",
@@ -87,6 +86,15 @@ module.exports = {
         '/excerpt/':[
           "",
         ],
-     }
+     },
+    sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
+    lastUpdated: '最后更新于', // 文档更新时间：每个文件git最后提交的时间
+    search: true,
+    searchMaxSuggestions: 10,
+    docsRepo: "SpringShadow/github-pages",
+    docsDir: "docs",
+    docsBranch: "master",
+    editLinks: true,
+    editLinkText: "在 GitHub 上编辑此页"
   },
 };
