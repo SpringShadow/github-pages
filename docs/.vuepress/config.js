@@ -21,7 +21,6 @@ module.exports = {
       ]
   ],
   themeConfig: {
-    theme:'foo',
     nav: [
       { text: '首页', link: '/home/' },
       {
@@ -55,11 +54,16 @@ module.exports = {
         ],
         '/article/javascript/':[
           "",
+          "codeStandards",
           "preload",
           "reg",
         ],
         '/article/es6/':[
           "",
+          "compile",
+          "difference",
+          "promise",
+          "other"
         ],
         '/article/webpack/':[
           "",
@@ -87,7 +91,7 @@ module.exports = {
           "",
         ],
      },
-    sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
+    // sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
     lastUpdated: '最后更新于', // 文档更新时间：每个文件git最后提交的时间
     search: true,
     searchMaxSuggestions: 10,

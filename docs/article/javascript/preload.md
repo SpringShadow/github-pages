@@ -11,9 +11,18 @@
 
 ## 如何做到图片预加载？
 
-先上代码，等会再解释
+在进行测试之前，附上我本地运行的一些环境
 
-```
+| 涉及工具 |      工具版本      |
+| -------- | :----------------: |
+| 操作系统   |      Mac Pro       |
+| Node     |       12.1.0       |
+| Npm      |       6.9.0        |
+| Gulp     |       3.9.1        |
+
+这里附上代码
+
+```js{4}
 const QueueLoad = {
     /**
      * 加载队列
@@ -109,9 +118,9 @@ const QueueLoad = {
         'images/img6.jpg',
         'images/img7.jpg',
     ];
-    QueueLoad.load(imgList,function (pro){
+    QueueLoad.load(imgList,(pro)=>{
         console.log(pro);
-    },function (){
+    },()=>{
         console.log('加载完成');
     })
 
@@ -157,11 +166,9 @@ demo
 
 ```
 gulpfile.js的代码
-```
+``` js{4}
 let gulp = require('gulp');
-
 let fs = require('fs'); //引用文件系统模块  gulp内置的模块
-
 // 读取文件
 function readFileList(path, filesList) {
   let files = fs.readdirSync(path); //读取 path路径下的文件
@@ -207,7 +214,7 @@ cd demo
 gulp getPath
 ```
 最后在根目录下 会生成一个imgpath.txt的文件，里面的内容就是我们所有图片的路径。导出的代码如下
-```
+```js{4}
 "./images/ShareImg.jpg",
 "./images/home/iocns/icon0.png",
 "./images/home/iocns/icon1.png",
