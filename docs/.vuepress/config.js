@@ -67,6 +67,7 @@ module.exports = {
         ],
         '/article/webpack/':[
           "",
+          "todolist",
           "vue-webpack"
         ],
         '/article/vue/':[
@@ -101,4 +102,11 @@ module.exports = {
     editLinks: true,
     editLinkText: "在 GitHub 上编辑此页"
   },
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@alias': '/images'
+      }
+    }
+  }
 };
