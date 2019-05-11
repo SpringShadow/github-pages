@@ -87,6 +87,7 @@ module.exports = {
         ],
         '/life/':[
           "",
+          "ride"
         ],
         '/excerpt/':[
           "",
