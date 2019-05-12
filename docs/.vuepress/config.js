@@ -68,7 +68,8 @@ module.exports = {
         '/article/webpack/':[
           "",
           "todolist",
-          "vue-webpack"
+          "todolist2",
+          // "vue-webpack"
         ],
         '/article/vue/':[
           "",
@@ -87,7 +88,8 @@ module.exports = {
         ],
         '/life/':[
           "",
-          "ride"
+          "ride",
+          // "choose"
         ],
         '/excerpt/':[
           "",
@@ -96,6 +98,7 @@ module.exports = {
     // sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
     lastUpdated: '最后更新于', // 文档更新时间：每个文件git最后提交的时间
     search: true,
+    sidebarDepth: 2,
     searchMaxSuggestions: 10,
     docsRepo: "SpringShadow/github-pages",
     docsDir: "docs",

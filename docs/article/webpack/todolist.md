@@ -1,4 +1,4 @@
-# todolist的webpack配置
+# webpack配置(一)
 
 ## 操作系统和开发工具版本
 
@@ -41,7 +41,7 @@ document.body.appendChild(root);            //将div节点添加到body下
 
 new Vue({
   render:(h)=>h(App)
-}).$moun(root);  //将vue实例挂在到root节点上
+}).$mount(root);  //将vue实例挂在到root节点上
 ```
 我们为`app.vue`文件创建一些简单的内容
 ```js{4}
@@ -107,7 +107,38 @@ vue-loader was used without the corresponding plugin. Make sure to include VueLo
 解决办法:如上面webpack.config.js所示，使用VueLoaderPlugin这个插件
 :::
 
-## 处理css文件
+## 编译es6/7/8代码
+
+安装依赖
+
+`npm intsall --save-dev babel-core babel-loader@7 '
+
+修改webpack.config.js
+
+
+```js{4}
+module.exports = {
+
+  //...
+
+  module:{
+    rules:[
+      // 编译es6/7/8代码
+      {
+        test:/\.js?$/,
+        loader:"babel-loader",
+        include:path.resolve(__dirname,"src"),// 使用 include 字段仅将 loader 模块应用在实际需要用其转换的位置中
+        exclude:/node_modules/,   // 忽略node_modules里的js文件
+      }
+    ]
+  },
+
+  //...
+
+};
+```
+
+## 处理.css文件
 
 安装相关的依赖
 
@@ -117,13 +148,9 @@ vue-loader was used without the corresponding plugin. Make sure to include VueLo
 
 ```js{4}
 module.exports = {
-  mode:"development",
-  entry:{
-      //.....
-  }
-  output:{
-      //....
-  },
+
+  //...
+
   module:{
     rules:[
       // 编译css
@@ -136,9 +163,9 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-        new VueLoaderPlugin(),
-    ],
+
+  //...
+
 };
 ```
 接着我们创建一个`style.css`的css文件,并写上如下代码来测试css文件是否被打包处理
@@ -151,7 +178,7 @@ body{
 
 `\"body{\\n  background-color: rgb(188, 233, 213);\\n}\\n\"`
 
-## 编译less文件
+## 编译.less文件
 安装相关的依赖
 
 `npm install --save-dev less-loader`
@@ -160,36 +187,28 @@ body{
 
 ```js{4}
 module.exports = {
-  mode:"development",
-  entry:{
-      //.....
-  }
-  output:{
-      //....
-  },
+
+  //...
+
   module:{
     rules:[
-    // 编译less
-    {
-      test: /\.less$/,
-      use:[
-        {
-          loader: "style-loader" // creates style nodes from JS strings
-        },
-        {
-          loader: "css-loader" // translates CSS into CommonJS
-        },
-        {
-          loader: "less-loader" // compiles Less to CSS
-        },
-      ]
-    },
-
+      // 编译less
+      {
+        test: /\.less$/,
+        use:[
+          {
+            loader: "style-loader" // creates style nodes from JS strings
+          },
+          {
+            loader: "css-loader" // translates CSS into CommonJS
+          },
+          {
+            loader: "less-loader" // compiles Less to CSS
+          },
+        ]
+      },
     ]
   },
-  plugins: [
-      //....
-  ],
 };
 ```
 同样的，我们新建一个`style.less`文件，在`index.js`这个文件下引用该文件，在然后写上一些less语法的测试代码
@@ -209,6 +228,58 @@ body{
 编译结果如下
 
 `\"body {\\n  background-color: \\\"blue\\\";\\n}\\n\"`
+
+## css属性加浏览器前缀
+
+安装依赖
+
+`npm install --save-dev postcss-loader autoprefixer`
+
+在根目录下创建一个postcss.config.js文件，编写一些相关的配置
+```js{4}
+const autoprefixer = require('autoprefixer');
+//PostCss会对CSS代码进行优化,主要是解决不同浏览器识别码的问题,具体作用自行查阅
+module.exports = {
+    plugins: [
+        autoprefixer()      //优化的过程通过一系列的组件进行优化,此次采用的是autoprefixer
+    ]
+};
+```
+接着我们修改下webpack.config.js里的配置
+```js{4}
+module.exports = {
+
+  //...
+
+  module:{
+    rules:[
+      // 编译less
+      {
+        test: /\.less$/,
+        use:[
+          {
+            loader: "style-loader" // creates style nodes from JS strings
+          },
+          {
+            loader: "css-loader" // translates CSS into CommonJS
+          },
+          {
+            loader: 'postcss-loader',
+              options: {
+                  sourceMap: true,  //复用less-loader生成的sourceMap,加快打包的速度
+              }
+            },
+          {
+            loader: "less-loader" // compiles Less to CSS
+          },
+        ]
+      },
+
+    ]
+  },
+};
+```
+
 
 ## 处理图片文件
 
@@ -238,4 +309,50 @@ body{
   background-image: url(./assets/ShareImg.jpg);
 }
 ```
-经过测试，得到的结果也是一样的，大的图片被打包到`dist`目录下，而小的图片被处理成base64的文件格式
+经过测试，得到的结果也是一样的，大的图片被打包到`dist`目录下，而小的图片被处理成base64的文件格式。
+
+## 配置wenpack-dev-serve
+
+安装依赖
+```
+npm install --save-dev webpack-dev-server  html-webpack-plugin
+```
+
+修改package.json的配置，增加一个`dev`的命令
+```
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "build": "webpack --config webpack.config.js",
+  "dev": "webpack-dev-server --config webpack.config.js"
+},
+```
+然后我们再稍微修改下webpack.config.js里的配置,配置devServer选项，使用`html-webpack-plugin`这个插件，
+这样我们才能生成一个html将我们的内容呈现在网页上。
+
+```js{4}
+const HtmlWebpackPlugin = require('html-webpack-plugin')       //引入html-webpack-plugin
+
+module.exports = {
+
+  //...
+
+  devServer: {
+    hot: true,  //是否开启热更新
+    port:3000,
+    contentBase:"./dist",
+    inline:true
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title:"todolist项目",  //网站标题
+      filename: "index.html",
+      // 如果配置了这个 则会使用我们本地的index.html
+      // template: 'src/assets/index.html'
+    }),
+  ]
+};
+```
+接着运行命令`npm run dev` ，访问`http://localhost:3000/`就可以看到之前编写的相关的效果了
+![html](../../images/html.jpg)
+这样一个简单的web服务就搭建好了，但是这只是基础版的，我们还要继续做一些优化，
+比如代码的热更新，公共代码的提取，抽离css代码，浏览器代码缓存等，这些我们就在下一篇文章再写吧！
