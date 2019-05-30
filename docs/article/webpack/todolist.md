@@ -97,21 +97,21 @@ module.exports = {
 				describe: optionsSchema.definitions.output.properties.path.description,
   ```
   解决办法:
-`npm i webpack-cli@3.1.1 -D`
+  `npm i webpack-cli@3.1.1 -D`
 
-2、就是在使用vue-loader15.0+版本时候，编译会报如下的错误
-`` `
-vue-loader was used without the corresponding plugin. Make sure to include VueLoaderPlugin in your webpack config.
- @ ./src/index.js 3:0-28 9:16-19
-```
-解决办法:如上面webpack.config.js所示，使用VueLoaderPlugin这个插件
+  2、就是在使用vue-loader15.0+版本时候，编译会报如下的错误
+  `` `
+  vue-loader was used without the corresponding plugin. Make sure to include VueLoaderPlugin in your webpack config.
+   @ ./src/index.js 3:0-28 9:16-19
+  ```
+  解决办法:如上面webpack.config.js所示，使用VueLoaderPlugin这个插件
 :::
 
 ## 编译es6/7/8代码
 
 安装依赖
 
-`npm intsall --save-dev babel-core babel-loader@7 '
+`npm intsall --save-dev babel-core babel-loader@7`
 
 修改webpack.config.js
 
@@ -213,11 +213,11 @@ module.exports = {
 ```
 同样的，我们新建一个`style.less`文件，在`index.js`这个文件下引用该文件，在然后写上一些less语法的测试代码
 
-`//index.js`
+`index.js`
 
 `import "./style.less";  //引用less文件`
 
-`//style.less`
+`style.less`
 
 ```js{4}
 @bgcolor:"blue";
@@ -280,14 +280,41 @@ module.exports = {
 };
 ```
 
-
 ## 处理图片文件
 
 安装依赖
 
 `npm install --save-dev url-loader file-loader`
 
-在`index.js`里引用两张图片，代码如下
+这些我们再修改下webpack.config.js里的配置
+
+```js{4}
+module.exports = {
+
+  //...
+
+  module:{
+    rules:[
+      //编译图片资源
+      {
+        test:/\.(gif|jpg|jpeg|png|svg)$/,
+        use:[
+          {
+            loader:'url-loader',   //url-loader实际上依赖于file-loader,file-loader处理完文件可以保存为一个文件供处理
+            options:{
+              limit:1024,         //url-loader的好处是可以加一个限制的大小,对于小图片,在范围内可直接将图片转换成base64码直接存放在js中,以减少http请求.
+              name: '[name].[ext]'        //输出文件的名字,[name] 文件原名,[ext]文件扩展名.
+            }
+          }
+        ]
+      }
+    ]
+  },
+};
+```
+配置里的的options配置项可以根据项目需要自行配置，比如`limit`是设置将不超过多少kb的图片转为base64文件
+
+接下来，我们测试下，我们在`index.js`里引用两张图片，代码如下
 
 ```
 import "./assets/ShareImg.jpg";   //引用一张大图
@@ -311,7 +338,7 @@ body{
 ```
 经过测试，得到的结果也是一样的，大的图片被打包到`dist`目录下，而小的图片被处理成base64的文件格式。
 
-## 配置wenpack-dev-serve
+## 配置webpack-dev-serve
 
 安装依赖
 ```
@@ -321,7 +348,6 @@ npm install --save-dev webpack-dev-server  html-webpack-plugin
 修改package.json的配置，增加一个`dev`的命令
 ```
 "scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1",
   "build": "webpack --config webpack.config.js",
   "dev": "webpack-dev-server --config webpack.config.js"
 },
@@ -334,7 +360,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')       //引入html-webp
 
 module.exports = {
 
-  //...
+  ...
 
   devServer: {
     hot: true,  //是否开启热更新

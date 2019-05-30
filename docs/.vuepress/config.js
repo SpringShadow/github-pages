@@ -73,6 +73,10 @@ module.exports = {
         ],
         '/article/vue/':[
           "",
+          "components",
+          "server",
+          "vueRouter",
+          "vuex"
         ],
         '/article/node/':[
           "",
