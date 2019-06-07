@@ -2,6 +2,9 @@ module.exports = {
   title: '逝者如斯',
   base: "/github-pages/",
   description: '子在川上曰：“逝者如斯夫，不舍昼夜。”',
+  head: [
+      ['link', { rel: 'icon', href: '/favicon2.ico' }]
+  ],
   markdown: {
     lineNumbers: true // 代码块显示行号
   },
@@ -68,11 +71,10 @@ module.exports = {
         '/article/webpack/':[
           "",
           "todolist",
-          "todolist2",
-          // "vue-webpack"
         ],
         '/article/vue/':[
           "",
+          "vue-loader",
           "components",
           "server",
           "vueRouter",
@@ -93,7 +95,8 @@ module.exports = {
         '/life/':[
           "",
           "ride",
-          // "choose"
+          "choose",
+          "status"
         ],
         '/excerpt/':[
           "",

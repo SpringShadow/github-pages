@@ -63,8 +63,6 @@ if(isDev){
 module.exports=config;
 ```
 
-
-
 ## css单独分离打包
 我们运行`npm run build`命令之后，发现在dist目录下，所有的css代码被打包到js文件里了，
 显然这不是我们在生产环境所需要的，因此我们需要将css代码单独提取出来，我们可以使用

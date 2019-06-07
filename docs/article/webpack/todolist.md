@@ -1,4 +1,4 @@
-# webpack配置(一)
+# webpack配置
 
 ## 操作系统和开发工具版本
 
@@ -338,7 +338,7 @@ body{
 ```
 经过测试，得到的结果也是一样的，大的图片被打包到`dist`目录下，而小的图片被处理成base64的文件格式。
 
-## 配置webpack-dev-serve
+## 配置webpack-dev-serve和生成html页面
 
 安装依赖
 ```
@@ -360,7 +360,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')       //引入html-webp
 
 module.exports = {
 
-  ...
+  //...
 
   devServer: {
     hot: true,  //是否开启热更新
@@ -380,5 +380,77 @@ module.exports = {
 ```
 接着运行命令`npm run dev` ，访问`http://localhost:3000/`就可以看到之前编写的相关的效果了
 ![html](../../images/html.jpg)
-这样一个简单的web服务就搭建好了，但是这只是基础版的，我们还要继续做一些优化，
-比如代码的热更新，公共代码的提取，抽离css代码，浏览器代码缓存等，这些我们就在下一篇文章再写吧！
+这样一个简单的web服务就搭建好了，接下来我们再实现一些其他的功能。
+
+## 代码的热加载
+
+热加载的基本原理，构建 bundle 的时候，加入一段 HMR runtime 的 js代码 和一段和服务沟通的 js代码。
+文件修改会触发 webpack 重新构建，服务器通过向浏览器发送更新消息，
+浏览器通过 jsonp 拉取更新的模块文件，jsonp 回调触发模块热替换逻辑，
+从而实现每次修改某个 js 文件后，页面局部更新。在上面的配置中，`devServer`下有个`hot`属性，
+当设置为true时，才可以开启热加载功能。
+
+同时，代码热加载需要使用webpack的两个自带的插件，因此我们得先引入webpack这个库，然后使用相关的插件
+```js{4}
+const webpack = require("webpack");
+module.exports = {
+  //...
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
+  ]
+};
+```
+
+## css单独分离打包
+我们运行`npm run build`命令之后，发现在dist目录下，所有的css代码被打包到js文件里了，
+显然这不是我们在生产环境所需要的，因此我们需要将css代码单独提取出来，我们可以使用
+mini-css-extract-plugin这个插件来进行处理，我们来安装这个插件
+
+`npm install mini-css-extract-plugin --save-dev`
+
+修改webpack.config.js代码
+
+```js{4}
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = {
+
+  ...
+
+  module:{
+    rules:[
+      {
+      // 编译.less文件
+      test: /\.less$/,
+      use:[
+        MiniCssExtractPlugin.loader,
+        {
+          loader: "css-loader" // translates CSS into CommonJS
+        },
+        {
+          loader: 'postcss-loader',
+            options: {
+                sourceMap: true,            //复用less-loader生成的sourceMap,加快打包的速度
+            }
+        },
+        {
+          loader: "less-loader" // compiles Less to CSS
+        }
+      }
+    ]
+  },
+  plugins: [
+
+    ...
+
+    new MiniCssExtractPlugin({
+        filename: 'index.[contenthash:8].css'
+    })
+  ]
+};
+```
+再次执行`npm run build`的时候，在`dist`目录下就会生成带有hash值的css文件了
+
+现在webpack的配置已经可以实现很多功能了，但是webpack的功能还有很多，十分的强大，
+比如生产环境和开发环境的设置和区分、公共代码的抽离、代码浏览器缓存等等，这些我会在接下来的文章中继续完善和优化。
