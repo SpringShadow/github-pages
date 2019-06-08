@@ -4,11 +4,13 @@
 
 人生不仅仅只有学习和工作，更有生活和理想。
 
-## 文章传送门
+# 文章传送门
 
 [图片预加载](../article/javascript/preload.html)
 
 [webpack配置](../article/webpack/todolist.html)
+
+[前端性能优化](../article/optimize/)
 
 [抉择](../life/choose.html)
 
