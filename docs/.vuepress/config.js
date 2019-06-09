@@ -29,20 +29,20 @@ module.exports = {
       {
         text: '文章',
         items: [
-          { text: 'html', link: '/article/html/' },
-          { text: 'css', link: '/article/css/' },
+          // { text: 'html', link: '/article/html/' },
+          // { text: 'css', link: '/article/css/' },
           { text: 'javascript', link: '/article/javascript/' },
-          { text: 'es6', link: '/article/es6/' },
+          // { text: 'es6', link: '/article/es6/' },
           { text: 'webpack', link: '/article/webpack/' },
-          { text: 'vue', link: '/article/vue/' },
-          { text: 'node', link: '/article/node/' },
-          { text: 'utils', link: '/article/utils/' },
+          // { text: 'vue', link: '/article/vue/' },
+          // { text: 'node', link: '/article/node/' },
+          // { text: 'utils', link: '/article/utils/' },
           { text: '性能优化', link: '/article/optimize/' },
         ]
       },
-      { text: '常用库', link: '/library/' },
+      // { text: '常用库', link: '/library/' },
       { text: '随笔', link: '/life/' },
-      { text: '摘抄', link: '/excerpt/' },
+      // { text: '摘抄', link: '/excerpt/' },
     ],
     sidebar:{
        // docs文件夹下面的accumulate文 件夹 文档中md文件 书写的位置(命名随意)
@@ -57,9 +57,9 @@ module.exports = {
         ],
         '/article/javascript/':[
           "",
-          "codeStandards",
+          // "codeStandards",
           "preload",
-          "reg",
+          // "reg",
         ],
         '/article/es6/':[
           "",
