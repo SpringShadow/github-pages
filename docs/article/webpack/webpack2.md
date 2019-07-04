@@ -1,6 +1,6 @@
-# webpack配置(二)
+# webpack配置优化
 
-上一篇文章 [webpack配置(一)](../webpack/todolist.html)里我们启动了一个简单的的web服务
+上一篇文章 [webpack基础配置](../webpack/todolist.html)里我们启动了一个简单的的web服务
 
 这篇文章，我们将会在原来的基础上来完善和优化我们的配置。
 
@@ -115,9 +115,7 @@ module.exports = {
 
 
 
-
 ## 公共模块的提取
-
 
 
 

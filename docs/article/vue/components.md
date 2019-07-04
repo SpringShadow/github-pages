@@ -7,7 +7,7 @@ vue的组件式开发，是vue的核心，vue的项目，基本上都是建立�
 
 一个vue组件就是一个vue实例，一个很简单的vue组件可以像下面这样来定义和使用：
 
-```js{4}
+```js
 import Vue from 'vue';
 //定义一个组件
 const component = {
@@ -37,7 +37,7 @@ new Vue({
 vue官方推荐组件定义的时候，组件名要使用驼峰的命名方式，比如全局定义组件时
 `Vue.component('CompA', component);`
 
-使用组件时 `template:<comp-a></comp-a>`
+使用组件时，使用`-`来进行分割如， `template:<comp-a></comp-a>`
 :::
 
 ::: warning

@@ -8,6 +8,8 @@
 
 [图片预加载](../article/javascript/preload.html)
 
+[数组应用篇](../article/javascript/arr.html)
+
 [webpack配置](../article/webpack/todolist.html)
 
 [前端性能优化](../article/optimize/)

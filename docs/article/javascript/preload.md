@@ -22,7 +22,7 @@
 
 这里附上代码
 
-```js{4}
+```js
 const QueueLoad = {
     /**
      * 加载队列
@@ -166,7 +166,7 @@ demo
 
 ```
 gulpfile.js的代码
-``` js{4}
+``` js
 let gulp = require('gulp');
 let fs = require('fs'); //引用文件系统模块  gulp内置的模块
 // 读取文件
@@ -214,7 +214,7 @@ cd demo
 gulp getPath
 ```
 最后在根目录下 会生成一个imgpath.txt的文件，里面的内容就是我们所有图片的路径。导出的代码如下
-```js{4}
+```js
 "./images/ShareImg.jpg",
 "./images/home/iocns/icon0.png",
 "./images/home/iocns/icon1.png",

@@ -1,4 +1,4 @@
-# webpack配置
+# webpack基础配置
 
 ## 操作系统和开发工具版本
 
@@ -32,7 +32,7 @@ webpack4 默认的打包入口文件为`./src`下的`index.js`或者`main.js`文
 
 `index.js`文件代码
 
-```js{4}
+```js
 import Vue from 'vue';
 import App from './app.vue';
 
@@ -44,7 +44,7 @@ new Vue({
 }).$mount(root);  //将vue实例挂在到root节点上
 ```
 我们为`app.vue`文件创建一些简单的内容
-```js{4}
+```js
 <template >
     <div class="text">{{text}}</div>
 </template>
@@ -64,7 +64,7 @@ new Vue({
 </style>
 ```
 接下来我们来配置webpack，我们在项目目录下新建一个webpack.config.js文件，直接上代码，再加注释
-```js{4}
+```js
 const path = require('path');   //node内置的文件模块，方便处理各种路径问题
 const { VueLoaderPlugin } = require('vue-loader');  //vue-loader升级到15.0+版本之后必须是使用该插件，不然在编译的时候一直报错
 
@@ -115,8 +115,7 @@ module.exports = {
 
 修改webpack.config.js
 
-
-```js{4}
+```js
 module.exports = {
 
   //...
@@ -146,7 +145,7 @@ module.exports = {
 
 配置webpack.config.js文件
 
-```js{4}
+```js
 module.exports = {
 
   //...
@@ -185,7 +184,7 @@ body{
 
 配置webpack.config.js文件
 
-```js{4}
+```js
 module.exports = {
 
   //...
@@ -219,7 +218,7 @@ module.exports = {
 
 `style.less`
 
-```js{4}
+```js
 @bgcolor:"blue";
 body{
   background-color: @bgcolor;
@@ -236,7 +235,7 @@ body{
 `npm install --save-dev postcss-loader autoprefixer`
 
 在根目录下创建一个postcss.config.js文件，编写一些相关的配置
-```js{4}
+```js
 const autoprefixer = require('autoprefixer');
 //PostCss会对CSS代码进行优化,主要是解决不同浏览器识别码的问题,具体作用自行查阅
 module.exports = {
@@ -246,7 +245,7 @@ module.exports = {
 };
 ```
 接着我们修改下webpack.config.js里的配置
-```js{4}
+```js
 module.exports = {
 
   //...
@@ -288,7 +287,7 @@ module.exports = {
 
 这些我们再修改下webpack.config.js里的配置
 
-```js{4}
+```js
 module.exports = {
 
   //...
@@ -328,7 +327,7 @@ eval("module.exports = \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABC
 ```
 
 我们再来测试下在css里通过background-image的方式引用图片，是如何打包处理的吧，
-```js{4}
+```js
 //style.less
 @bgcolor:"blue";
 body{
@@ -355,7 +354,7 @@ npm install --save-dev webpack-dev-server  html-webpack-plugin
 然后我们再稍微修改下webpack.config.js里的配置,配置devServer选项，使用`html-webpack-plugin`这个插件，
 这样我们才能生成一个html将我们的内容呈现在网页上。
 
-```js{4}
+```js
 const HtmlWebpackPlugin = require('html-webpack-plugin')       //引入html-webpack-plugin
 
 module.exports = {
@@ -391,7 +390,7 @@ module.exports = {
 当设置为true时，才可以开启热加载功能。
 
 同时，代码热加载需要使用webpack的两个自带的插件，因此我们得先引入webpack这个库，然后使用相关的插件
-```js{4}
+```js
 const webpack = require("webpack");
 module.exports = {
   //...
@@ -411,7 +410,7 @@ mini-css-extract-plugin这个插件来进行处理，我们来安装这个插件
 
 修改webpack.config.js代码
 
-```js{4}
+```js
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
