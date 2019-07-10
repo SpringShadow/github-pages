@@ -10,7 +10,7 @@
 
 [数组应用篇](../article/javascript/arr.html)
 
-[webpack配置](../article/webpack/todolist.html)
+[webpack配置](../article/webpack/webpack.html)
 
 [前端性能优化](../article/optimize/)
 
