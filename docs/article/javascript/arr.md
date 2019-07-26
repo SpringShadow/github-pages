@@ -1,3 +1,6 @@
+---
+pageClass: custom-page-class
+---
 # 数组应用篇
 
 ## 取数组中的最大值和最小值
