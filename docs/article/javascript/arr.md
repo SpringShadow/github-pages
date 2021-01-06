@@ -41,7 +41,7 @@ pageClass: custom-page-class
   console.log( sum3 ); //求和，10
   console.log( mul3 ); //求乘积，24
 ```
-  ### 方法二：for循环
+### 方法二：for循环
 ```js
   let numArr4 = [1, 2, 3, 4];
   let sum4=0;

@@ -168,7 +168,7 @@ module.exports = {
 };
 ```
 接着我们创建一个`style.css`的css文件,并写上如下代码来测试css文件是否被打包处理
-```js{4}
+```js{}
 body{
   background-color: rgb(188, 233, 213);
 }

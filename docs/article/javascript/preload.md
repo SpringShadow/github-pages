@@ -171,41 +171,42 @@ let gulp = require('gulp');
 let fs = require('fs'); //引用文件系统模块  gulp内置的模块
 // 读取文件
 function readFileList(path, filesList) {
-  let files = fs.readdirSync(path); //读取 path路径下的文件
+	let files = fs.readdirSync(path); //读取 path路径下的文件
   // 遍历
-  files.forEach(function(item, index) {
-    let stat = fs.statSync(path + item);
-    if (stat.isDirectory()) {
-      //递归读取文件
-      readFileList(path + item + "/", filesList);
-    } else {
-      //mac下会读取.DS_Store文件 需要过滤掉
-      if(item!==".DS_Store"){
-        let obj = {}; //定义一个对象存放文件的路径和名字
-        obj.fullPath=path+item;
-        filesList.push(obj);
-      }
-    }
-  });
-  return filesList;
+	files.forEach(function(item, index) {
+		let stat = fs.statSync(path + item);
+		if (stat.isDirectory()) {
+			//递归读取文件
+			readFileList(path + item + "/", filesList);
+		} else {
+			//mac下会读取.DS_Store文件 需要过滤掉
+			if(item!==".DS_Store"){
+				//定义一个对象存放文件的路径和名字
+				let obj = {}; 
+				obj.fullPath=path+item;
+				filesList.push(obj);
+			}
+		}
+	});
+	return filesList;
 }
 
 gulp.task('getPath', function() {
-  let imageList = [];
-  readFileList("./images/", imageList);
+	let imageList = [];
+	readFileList("./images/", imageList);
 
-  let imgPathArr=[];
-  for (let i = 0; i < imageList.length; i++) {
-      imgPathArr.push('"'+imageList[i].fullPath+'"');
-  }
-  // 在根目录下创建imgpath.txt文本文件，同时将imgPathArr里的内容写入到该文件下
-  fs.writeFile("imgpath.txt", imgPathArr, function(err) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("file writes sucess!!");
-    }
-  });
+	let imgPathArr=[];
+	for (let i = 0; i < imageList.length; i++) {
+		imgPathArr.push('"'+imageList[i].fullPath+'"');
+	}
+	  // 在根目录下创建imgpath.txt文本文件，同时将imgPathArr里的内容写入到该文件下
+	fs.writeFile("imgpath.txt", imgPathArr, function(err) {
+		if (err) {
+			console.log(err);
+		} else {
+			console.log("file writes sucess!!");
+		}
+	});
 });
 ```
 第三步 切换到该文件夹下 执行"gulp getPath" 命令
