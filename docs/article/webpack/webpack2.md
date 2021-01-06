@@ -12,7 +12,7 @@
 从而实现每次修改某个 js 文件后，页面局部更新。
 
 代码热加载需要使用webpack的两个自带的插件，因此我们得先引入webpack这个库，然后使用相关的插件
-```js{}
+```js
 const webpack = require("webpack");
 module.exports = {
   //...
@@ -34,7 +34,7 @@ module.exports = {
 
 安装了这个包之后，我们修改下package.json文件，修改之后如下
 
-```js{}
+```js
 "scripts": {
   "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
   "dev": "cross-env NODE_ENV=development webpack-dev-server --config  webpack.config.js"
@@ -42,7 +42,7 @@ module.exports = {
 ```
 然后我们在webpack.config.js里就可以获取和设置环境变量了
 
-```js{}
+```js
 const isDev=process.env.NODE_ENV==='development';   //设置环境变量
 
 const config={
@@ -72,7 +72,7 @@ mini-css-extract-plugin这个插件来进行处理，我们来安装这个插件
 
 修改webpack.config.js代码
 
-```js{}
+```js
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -117,7 +117,7 @@ module.exports = {
 
 需要用到的插件为`extract-text-webpack-plugin`,先安装这个插件，`npm install extract-text-webpack-plugin --save-dev`
 
-```js{}
+```js
 let ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = {
