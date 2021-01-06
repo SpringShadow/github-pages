@@ -5,10 +5,9 @@ module.exports = {
     head: [
         ['link', {
             rel: 'icon',
-            href: '/favicon.ico'
+            href: '/favicon2.ico'
         }]
     ],
-    // dest:"public",
     markdown: {
         lineNumbers: true // 代码块显示行号
     },
@@ -59,77 +58,77 @@ module.exports = {
             //     text: '常用库',
             //     link: '/library/'
             // },
-            // {
-            //     text: '随笔',
-            //     link: '/life/'
-            // },
-            // {
-            //     text: '摘抄',
-            //     link: '/excerpt/'
-            // },
+            {
+                text: '随笔',
+                link: '/life/'
+            },
+            {
+                text: '摘抄',
+                link: '/excerpt/'
+            },
         ],
-        // sidebar: {
-        //     // docs文件夹下面的accumulate文 件夹 文档中md文件 书写的位置(命名随意)
-        //     '/home/': [
-        //         "",
-        //     ],
-        //     '/article/html/': [
-        //         "",
-        //     ],
-        //     '/article/css/': [
-        //         "",
-        //     ],
-        //     '/article/javascript/': [
-        //         "",
-        //         // "codeStandards",
-        //         "preload",
-        //         "arr",
-        //         // "reg",
-        //     ],
-        //     '/article/es6/': [
-        //         "",
-        //         "compile",
-        //         "difference",
-        //         "promise",
-        //         "other"
-        //     ],
-        //     '/article/webpack/': [
-        //         "",
-        //         "webpack",
-        //     ],
-        //     '/article/vue/': [
-        //         "",
-        //         "vue-loader",
-        //         "components",
-        //         "server",
-        //         "vueRouter",
-        //         "vuex"
-        //     ],
-        //     '/article/node/': [
-        //         "",
-        //     ],
-        //     '/article/utils/': [
-        //         "",
-        //     ],
-        //     '/article/optimize/': [
-        //         "",
-        //     ],
-        //     '/library/': [
-        //         "",
-        //     ],
-        //     '/life/': [
-        //         "",
-        //         "ride",
-        //         "choose",
-        //         "status"
-        //     ],
-        //     '/excerpt/': [
-        //         "",
-        //     ],
-        //     '/markdown/': [
-        //         "",
-        //     ],
-        // },
+        sidebar: {
+            // docs文件夹下面的accumulate文 件夹 文档中md文件 书写的位置(命名随意)
+            '/home/': [
+                "",
+            ],
+            '/article/html/': [
+                "",
+            ],
+            '/article/css/': [
+                "",
+            ],
+            '/article/javascript/': [
+                "",
+                // "codeStandards",
+                "preload",
+                "arr",
+                // "reg",
+            ],
+            '/article/es6/': [
+                "",
+                "compile",
+                "difference",
+                "promise",
+                "other"
+            ],
+            '/article/webpack/': [
+                "",
+                "webpack",
+            ],
+            '/article/vue/': [
+                "",
+                "vue-loader",
+                "components",
+                "server",
+                "vueRouter",
+                "vuex"
+            ],
+            '/article/node/': [
+                "",
+            ],
+            '/article/utils/': [
+                "",
+            ],
+            '/article/optimize/': [
+                "",
+            ],
+            '/library/': [
+                "",
+            ],
+            '/life/': [
+                "",
+                "ride",
+                "choose",
+                "status"
+            ],
+            '/excerpt/': [
+                "",
+            ],
+            '/markdown/': [
+                "",
+            ],
+        },
         // sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
         lastUpdated: '最后更新于', // 文档更新时间：每个文件git最后提交的时间
         search: true,
