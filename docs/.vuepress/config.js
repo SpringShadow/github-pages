@@ -54,18 +54,18 @@ module.exports = {
                     },
                 ]
             },
-            {
-                text: '常用库',
-                link: '/library/'
-            },
-            {
-                text: '随笔',
-                link: '/life/'
-            },
-            {
-                text: '摘抄',
-                link: '/excerpt/'
-            },
+            // {
+            //     text: '常用库',
+            //     link: '/library/'
+            // },
+            // {
+            //     text: '随笔',
+            //     link: '/life/'
+            // },
+            // {
+            //     text: '摘抄',
+            //     link: '/excerpt/'
+            // },
         ],
         // sidebar: {
         //     // docs文件夹下面的accumulate文 件夹 文档中md文件 书写的位置(命名随意)
