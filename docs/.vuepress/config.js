@@ -11,6 +11,7 @@ module.exports = {
     markdown: {
         lineNumbers: true // 代码块显示行号
     },
+    dest:'public',
     locales: {
         "/": {
             "lang": "zh-CN"
