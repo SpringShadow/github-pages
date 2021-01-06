@@ -22,7 +22,7 @@ deploy:
   local_dir: docs/.vuepress/dist
   github-token: $GITHUB_TOKEN
   keep-history: true
-  target-branch: gh-pages
+  target-branch: master
   verbose: true
   on:
     branch: master
